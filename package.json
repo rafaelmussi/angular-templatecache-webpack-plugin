@@ -1,0 +1,41 @@
+{
+  "name": "angular-templatecache-webpack-plugin",
+  "version": "1.0.0",
+  "license": "MIT",
+  "description": "Webpack plugin that concatenates and registers AngularJS templates in the $templateCache.",
+  "author": "Rafael Mussi (https://github.com/rafaelmussi)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "webpack": "^4.44.2"
+  },
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "glob": "^7.1.6",
+    "glob-parent": "^5.1.1",
+    "jsesc": "^3.0.2",
+    "lodash.template": "^4.5.0",
+    "path": "^0.12.7",
+    "schema-utils": "^1.0.0"
+  },
+  "peerDependencies": {
+    "webpack": "^1.0.0 || ^2.0.0 || ^3.0.0  || ^4.0.0"
+  },
+  "keywords": [
+    "angular-templatecache-webpack-plugin",
+    "angular",
+    "angularjs",
+    "angular js",
+    "templatecache",
+    "template",
+    "template cache",
+    "webpack",
+    "plugin",
+    "cache busting"
+  ],
+  "bugs": "https://github.com/rafaelmussi/angular-templatecache-webpack-plugin/issues",
+  "homepage": "https://github.com/rafaelmussi/angular-templatecache-webpack-plugin",
+  "repository": "https://github.com/rafaelmussi/angular-templatecache-webpack-plugin.git"
+}
