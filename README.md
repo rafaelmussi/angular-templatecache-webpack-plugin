@@ -33,7 +33,7 @@ const AngularTemplateCacheWebpackPlugin = require('angular-templatecache-webpack
 
 module.exports = {
   plugins: [
-    new HtmlWebpackPlugin({
+    new AngularTemplateCacheWebpackPlugin({
         source: 'templates/**/*.html'
         /**
          * See `Options and Defaults` for information
