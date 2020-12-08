@@ -6,7 +6,7 @@
 
 > Speed up your AngularJS app by automatically combining, concatenating, registering and caching your AngularJS HTML templates in the `$templateCache`.
 
-<a href="#install">Install</a> | <a href="#usage">Usage</a> | <a href="#usage">Options and Defaults</a> | <a href="#license">License</a>
+[Install](#install) | [Usage](#usage) | [Options and Defaults](#options-and-defaults) | [License](#license)
 
 ----
 
@@ -73,26 +73,26 @@ Name | Type | Default | Description
 `module` | `{String}` | `'templates'` |  Name of the existing AngularJS module.
 `standalone` | `{Boolean}` | `false` |  Create a new AngularJS module, instead of using an existing one.
 `escapeOptions ` | `{Object}` | {} |  An object with jsesc-options. See [jsesc](https://www.npmjs.com/package/jsesc#api) for more information.
-`templateHeader` | `{String}` | [`*See below`](#Default Templates:) | Override template header.
-`templateBody` | `{String}` | [`*See below`](#Default Templates:) | Override template body.
-`templateFooter` | `{String}` | [`*See below`](#Default Templates:) | Override template footer.
+`templateHeader` | `{String}` | [`*See below`](#default-templates) | Override template header.
+`templateBody` | `{String}` | [`*See below`](#default-templates) | Override template body.
+`templateFooter` | `{String}` | [`*See below`](#default-templates) | Override template footer.
 
 
-> #### Default Templates:
+### Default Templates
 > `templateHeader:`
->```js
->'angular.module("<%= module %>"<%= standalone %>).run(["$templateCache", function($templateCache) {'
->```
+> ```js
+> 'angular.module("<%= module %>"<%= standalone %>).run(["$templateCache", function($templateCache) {'
+> ```
 > ---
->`templateBody:`
->```js
->'$templateCache.put("<%= url %>","<%= contents %>");'
->```
+> `templateBody:`
+> ```js
+> '$templateCache.put("<%= url %>","<%= contents %>");'
+> ```
 > ---
->#### `templateFooter:`
->```js
->'}]);'
->```
+> `templateFooter:`
+> ```js
+> '}]);'
+> ```
 
 ## License
 
