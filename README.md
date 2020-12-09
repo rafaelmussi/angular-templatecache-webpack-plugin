@@ -10,7 +10,7 @@
 
 ----
 
-####:warning: If you are a **`Laravel` user**, check out this [laravel mix package](https://github.com/rafaelmussi/laravel-mix-angular-templatecache) :warning:
+#### :warning: If you are a **`Laravel` user**, check out this [laravel mix package](https://github.com/rafaelmussi/laravel-mix-angular-templatecache) :warning:
 
 ----
 
