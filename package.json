@@ -1,6 +1,6 @@
 {
   "name": "angular-templatecache-webpack-plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "description": "Webpack plugin that concatenates and registers AngularJS templates in the $templateCache.",
   "author": "Rafael Mussi (https://github.com/rafaelmussi)",
