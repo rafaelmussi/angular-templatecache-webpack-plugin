@@ -10,6 +10,10 @@
 
 ----
 
+####:warning: If you are a **`Laravel` user**, check out this [laravel mix package](https://github.com/rafaelmussi/laravel-mix-angular-templatecache) :warning:
+
+----
+
 ## Install
 
 Install with [npm](https://www.npmjs.com/package/angular-templatecache-webpack-plugin) or [yarn](https://yarnpkg.com/package/angular-templatecache-webpack-plugin)
@@ -24,8 +28,7 @@ Install with [npm](https://www.npmjs.com/package/angular-templatecache-webpack-p
 
 ## Usage
 
-The [webpack](http://webpack.js.org/) plugin will combine all your angular `.html` templates and save to dist/templates.js (default filename). Just add the plugin to your `webpack`
-config as follows:
+This [webpack](http://webpack.js.org/) plugin will combine all your angular `.html` templates and save to dist/templates.js (default filename). Just add the plugin to your `webpack` config as follows:
 
 **webpack.config.js**
 ```js
@@ -36,7 +39,7 @@ module.exports = {
     new AngularTemplateCacheWebpackPlugin({
         source: 'templates/**/*.html'
         /**
-         * See `Options and Defaults` for information
+         * See options and defaults below for more details
          */
     })
   ]
@@ -44,7 +47,7 @@ module.exports = {
 ```
 
 This will generate a file `dist/templates.js` containing the following:
-> ℹ️ Sample output (_prettified_).
+> :information_source: Sample output (_prettified_).
 
 ```js
 angular.module("templates").run([$templateCache,
@@ -61,7 +64,7 @@ angular.module("templates").run([$templateCache,
 
 ```
 Include this file in your app and AngularJS will use the $templateCache when available.
-> ℹ️ This plugin will __NOT__ create a new AngularJS module by default, but use a module called `templates`. If you want to create a new module, set `options.standalone` to `true`.
+> :information_source: This plugin will __NOT__ create a new AngularJS module by default, but use a module called `templates`. If you want to create a new module, set `options.standalone` to `true`.
 
 
 ### Options and Defaults
