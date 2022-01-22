@@ -9,19 +9,17 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "webpack": "^4.44.2"
+    "webpack": "^5.36.2"
   },
   "dependencies": {
-    "fs": "0.0.1-security",
     "glob": "^7.1.6",
     "glob-parent": "^5.1.1",
     "jsesc": "^3.0.2",
     "lodash.template": "^4.5.0",
-    "path": "^0.12.7",
-    "schema-utils": "^1.0.0"
+    "schema-utils": "^3.1.1"
   },
   "peerDependencies": {
-    "webpack": "^1.0.0 || ^2.0.0 || ^3.0.0  || ^4.0.0"
+    "webpack": "^5.0.0"
   },
   "keywords": [
     "angular-templatecache-webpack-plugin",
