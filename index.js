@@ -3,7 +3,8 @@ const glob = require("glob");
 const path = require("path");
 const jsesc = require("jsesc");
 const globParent = require("glob-parent");
-const validateOptions = require("schema-utils");
+const { validate } = require("schema-utils");
+const webpack = require("webpack");
 const lodashTemplate = require('lodash.template');
 
 const schema = {
@@ -53,7 +54,7 @@ const schema = {
 class AngularTemplateCacheWebpackPlugin {
 
     constructor(options) {
-        validateOptions(schema, options, 'AngularTemplateCacheWebpackPlugin');
+        validate(schema, options, { name: 'AngularTemplateCacheWebpackPlugin' });
 
         const TEMPLATE_HEADER = 'angular.module(\'<%= module %>\'<%= standalone %>).run([\'$templateCache\', function($templateCache) {';
         const TEMPLATE_BODY = '$templateCache.put(\'<%= url %>\',\'<%= contents %>\');';
@@ -82,34 +83,43 @@ class AngularTemplateCacheWebpackPlugin {
 
     apply(compiler) {
 
+        const outputNormal = {};
+
         compiler.hooks.thisCompilation.tap('AngularTemplateCacheWebpackPlugin', (compilation) => {
-            compilation.hooks.additionalAssets.tapAsync('AngularTemplateCacheWebpackPlugin', (callback) => {
+            this.files.forEach(f => compilation.fileDependencies.add(path.join(compiler.context, f)));
+            compilation.hooks.additionalAssets.tapAsync('AngularTemplateCacheWebpackPlugin', (cb) => {
+                this.processTemplates();
+
+                const dest = compiler.options.output.path;
+                const outputPath = path.resolve(
+                    dest,
+                    this.options.outputFilename
+                );
                 let cachedTemplates = '';
 
                 this.templatelist.forEach((template) => {
                     cachedTemplates += template + '\n';
+
                 });
 
-                // Insert this list into the webpack build as a new file asset:
-                compilation.assets[this.options.outputFilename] = {
-                    source: function () {
-                        return cachedTemplates;
-                    },
-                    size: function () {
-                        return cachedTemplates.length;
-                    },
-
+                outputNormal[outputPath] = {
+                    filename: this.options.outputFilename,
+                    content: cachedTemplates,
+                    size: cachedTemplates.length
                 };
-
-                callback();
+                for (const [key, value] of Object.entries(outputNormal)) {
+                    compilation.emitAsset(
+                        value.filename,
+                        new webpack.sources.RawSource(value.content),
+                    );
+                }
+                cb();
             });
 
         });
     }
 
     init() {
-        this.templatelist = [];
-
         this.files = typeof this.options.source === 'string'
             ? glob.sync(this.options.source)
             : this.options.source;
@@ -117,11 +127,10 @@ class AngularTemplateCacheWebpackPlugin {
         this.templateBody = this.options.templateBody;
         this.templateHeader = this.options.templateHeader;
         this.templateFooter = this.options.templateFooter;
-
-        this.processTemplates();
     }
 
     processTemplates() {
+        this.templatelist = [];
         this.processHeader();
         this.processBody();
         this.processFooter();
@@ -141,9 +150,9 @@ class AngularTemplateCacheWebpackPlugin {
             tpl.source = fs.readFileSync(file);
 
             let htmlRootDir = globParent(this.options.source);
-            let filename = path.relative(htmlRootDir, file);
+            let filename = path.posix.relative(htmlRootDir, file);
 
-            let url = path.join(this.options.root, filename);
+            let url = path.posix.join(this.options.root, filename);
             if (this.options.root === '.' || this.options.root.indexOf('./') === 0) {
                 url = './' + url;
             }
