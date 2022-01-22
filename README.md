@@ -4,13 +4,6 @@
 ![npm](https://img.shields.io/npm/dw/angular-templatecache-webpack-plugin.svg)
 [![license](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://npmjs.org/package/angular-templatecache-webpack-plugin)
 
-# I FIXED SOME ISSUES OF THIS PACKAGE AS I NEEDED IT AND IT SEEMS UNMAINTAINED, FIXES:
-
-Add support for webpack 5, now does not support terser minimizer.
-Now the path separator is always / instead of platform.
-Add watch mode support.
-Update schema utils.
-
 > Speed up your AngularJS app by automatically combining, concatenating, registering and caching your AngularJS HTML templates in the `$templateCache`.
 
 [Install](#install) | [Usage](#usage) | [Options and Defaults](#options-and-defaults) | [License](#license)
